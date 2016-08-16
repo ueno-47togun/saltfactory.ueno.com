@@ -1,0 +1,64 @@
+<ion-view class="category-feeds-view">
+    <ion-nav-buttons side="right">
+        <a class="button button-icon ion-android-search" ng-click="goToSearch()" style="color: #cb1e24"></a>
+        <img ng-src="img/profile.png" ng-click="goToProfile()" width="40px">
+    </ion-nav-buttons>
+    <ion-nav-title>
+        <span>View Playlist</span>
+    </ion-nav-title>
+
+    <div class="tabs-striped tabs-top tabs-background-light">
+        <div class="tabs">
+            <a class="tab-item" href="#">
+                <i class="icon ion-home" style="color:#cb1e24"><i style="font-size:18px; color:#cb1e24">Home</i></i>
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-arrow-graph-up-right" style="color:#cb1e24;"><i style="font-size:18px; color:#cb1e24">Trending</i></i>
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-filing" style="color:#cb1e24"><i style="font-size:18px; color:#cb1e24">Categories</i></i>
+            </a>
+        </div>
+    </div>
+
+
+    <ion-content>
+        <div class="not-found" ng-if="!records.length && !loading">
+            <h4><i class="fa fa-frown-o"></i> No Videos Found</h4>
+        </div>
+        <div class="not-found" ng-if="loading">
+            <h4><i class="fa fa-circle-o-notch fa-spin"></i> Loading</h4>
+        </div>
+        <div class="video list card" ng-repeat="n in records" style="margin-top:50px">
+            <div class="item item-body">
+                <a ui-sref="app.home.playlist.watch({id:n.mediaid,playlist:playlistId})">
+                    <img class="full-image" ng-src="{{n.image | resize:240}}" />
+                    <span class="item-duration">{{n.duration|time}}</span>
+
+                    <span class="item-star">
+                           <div ng-repeat="i in [1,2,3,4,5]">
+
+                               <i class="fa fa-star" style="color:#a1a1a1; float:left"></i>
+                               <!--<i class="ion-android-star" style="color:#a1a1a1; float:left"></i>-->
+                           </div>
+                    </span>
+                    <span class="item-starred">
+                           <div ng-repeat="i in [1,2,3]">
+                               <i class="fa fa-star" style="color:#cb1e24; float:left"></i>
+                           </div>
+                    </span>
+                </a>
+                <div class="item-footer">
+                    <div class="row">
+                        <div class="col col-80 item-meta">
+                            <h4>{{n.title}}</h4>
+                            <p>{{n.description}}</p>
+                        </div>
+                        <div class="col col-20 item-views">{{n.views|viewer}}<br/>views
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

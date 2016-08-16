@@ -1,0 +1,59 @@
+<ion-view class="category-feeds-view" id="soon">
+    <ion-nav-buttons side="right">
+        <a class="button button-icon ion-android-search" ng-click="goToSearch()" ui-sref="search" style="color: #cb1e24"></a>
+        <img ng-src="img/profile.png" ng-click="goToProfile()" width="40px">
+    </ion-nav-buttons>
+
+    <ion-nav-title>
+        <span>Select A Category</span>
+    </ion-nav-title>
+
+
+    <div class="tabs-striped tabs-top tabs-background-light">
+        <div class="tabs">
+            <a class="tab-item" href="#">
+                <i class="icon ion-home" style="color:#cb1e24"><i style="font-size:18px; color:#cb1e24">Home</i></i>
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-arrow-graph-up-right" style="color:#cb1e24;"><i style="font-size:18px; color:#cb1e24">Trending</i></i>
+            </a>
+            <a class="tab-item" href="#">
+                <i class="icon ion-filing" style="color:#cb1e24"><i style="font-size:18px; color:#cb1e24">Categories</i></i>
+            </a>
+        </div>
+    </div>
+
+
+    <ion-content class="padding" style="margin-top: 50px">
+       <!-- <div class="playlist list card" ng-repeat="n in records">
+                <div class="item item-body">
+                                <a ui-sref="app.home.playlist.items({id:n.ID,title:n.Title})">
+                                    <img class="full-image" src="{{n.Image | resize:150}}"></a>
+                </div>
+        </div>-->
+
+        <div class="playlist list card">
+            <div class="item item-body">
+                <div class="row">
+                    <div class="col-md-5">
+                        <a href="start.html#/app/home/playlist/items/40048">
+                            <img class="full-image" ng-src="img/cate-1.jpg"></a>
+                        <a href="start.html#/app/home/playlist/items/40043">
+                            <img class="full-image" ng-src="img/cate-3.jpg"></a>
+                        <a href="start.html#/app/home/playlist/items/40044">
+                            <img class="full-image" ng-src="img/cate-5.jpg"></a>
+                    </div>
+                    <div class="col-md-1" style="margin: 2px"></div>
+                    <div class="col-md-5">
+                        <a href="start.html#/app/home/playlist/items/40046">
+                            <img class="full-image" ng-src="img/cate-2.jpg"></a>
+                        <a href="start.html#/app/home/playlist/items/40045">
+                            <img class="full-image" ng-src="img/cate-4.jpg"></a>
+                        <a href="start.html#/app/home/playlist/items/40047">
+                            <img class="full-image" ng-src="img/cate-1.jpg"></a>
+                    </div>
+                </div>
+            </div>
+            </div>
+    </ion-content>
+</ion-view>

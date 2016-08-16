@@ -1,0 +1,138 @@
+﻿<ion-view class="settings-view-advance auth-outer" cache-view="false">
+    <ion-nav-title>
+        <span>Your Account</span>
+    </ion-nav-title>
+    <ion-content>
+        <div class="row picture-box" back-img="record.Extra.banner">
+            <div class="col">
+                <div class="user-image-container">
+                    <pre-img ratio="_1_1" helper-class="rounded-image">
+                        <img class="user-image" ng-src="{{record.Picture | gravtaar:record.Email:90:'mm'}}" spinner-on-load>
+                    </pre-img>
+                    <ng-upload-form ng-model="files"
+                                    template-url="/views/upload/picture.html"
+                                    url="{{me.encoder}}"
+                                    storage="{{me.Storage}}"
+                                    container="{{me.container}}"
+                                    server-mode="{{config.mode}}"
+                                    on-uploaded="updatePicture(file)"
+                                    user="{{me.ID}}"
+                                    size="275"
+                                    accept-file-types="picture"
+                                    max-chunk-size="10">
+                    </ng-upload-form>
+                </div>
+            </div>
+            <div class="col">
+                <ng-upload-form ng-model="files2"
+                                template-url="/views/upload/banner.html"
+                                url="{{me.encoder}}"
+                                storage="{{me.Storage}}"
+                                container="{{me.container}}"
+                                server-mode="{{config.mode}}"
+                                on-uploaded="updateBanner(file)"
+                                user="{{me.ID}}"
+                                size="275"
+                                accept-file-types="picture"
+                                max-chunk-size="10">
+                </ng-upload-form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form name="signup_form" class="" novalidate ng-cloak>
+                    <div style="padding: 5%"></div>
+                    <div class="row">
+                        <div class="col">
+                            <div class="list">
+                                <label class="item item-input item-floating-label">
+                                    <span class="input-label">Username</span>
+                                    <input type="text" ng-model="record.UserName" required maxlength="100" placeholder="User Name">
+                                </label>
+                                <label class="item item-input item-floating-label">
+                                    <span class="input-label">First Name</span>
+                                    <input type="text" ng-model="record.FirstName" required maxlength="100" placeholder="First Name">
+                                </label>
+                                <label class="item item-input item-floating-label">
+                                    <span class="input-label">Last Name</span>
+                                    <input type="text" ng-model="record.Surname" required maxlength="100" placeholder="Last Name">
+                                </label>
+                                <label class="item item-input">
+                                    <span class="input-label">Password</span>
+                                    <input type="password" placeholder="Password" ng-model="record.newPassword">
+                                </label>
+                                <label class="item item-input">
+                                    <span class="input-label">Birthday</span>
+                                    <input type="date" ng-model="record.Birthday" required placeholder="Date of Birth">
+                                </label>
+                                <label class="item item-input item-floating-label">
+                                    <span class="input-label">Email</span>
+                                    <input type="email" ng-model="record.Email" required maxlength="255" placeholder="Email">
+                                </label>
+                                <label class="item item-input item-floating-label">
+                                    <span class="input-label">Zipcode</span>
+                                    <input type="text" ng-model="record.Postcode" required maxlength="10" placeholder="Zipcode">
+                                </label>
+                                <label class="item item-input item-select">
+                                    <span class="input-label">Gender</span>
+                                    <select ng-model="record.Extra.gender">
+                                        <option value="male">Male</option>
+                                        <option value="female">Female</option>
+                                        <option value="other">Other</option>
+                                    </select>
+                                </label>
+                            </div>
+                            <ul class="ul-unstyled" ng-if="errors">
+                                <li class="alert danger" ng-repeat="err in errors">{{err}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--<div class="row terms bottom-content" ng-if="config.extra">
+                        <div class="col text-center">
+                            <p> What type of content are you interested in seeing? </p>
+                        </div>
+                    </div>-->
+
+                   <!-- <div class="row" style="text-align: center" ng-if="config.extra">
+                        <div class="col">
+                            <input type="checkbox" name="interest" class="css-checkbox" id="checkboxH1" ng-model="record.Extra.wellness" value="wellness">
+                            <label for="checkboxH1" class="css-label back1">Wellness</label>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" name="interest" class="css-checkbox" id="checkboxH2" ng-model="record.Extra.cooking" value="cooking">
+                            <label for="checkboxH2" class="css-label back2">Cooking</label>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" name="interest" class="css-checkbox" id="checkboxH3" ng-model="record.Extra.life" value="life">
+                            <label for="checkboxH3" class="css-label back3">Life Choices</label>
+                        </div>
+                    </div>
+                    <div class="row" style="text-align: center" ng-if="config.extra">
+                        <div class="col"></div>
+                        <div class="col">
+                            <input type="checkbox" name="checkboxH4" id="checkboxH4" class="css-checkbox" ng-model="record.Extra.family" value="family">
+                            <label for="checkboxH4" class="css-label back4">Family</label>
+                        </div>
+                        <div class="col">
+                            <input type="checkbox" name="checkboxH5" id="checkboxH5" class="css-checkbox" ng-model="record.Extra.mindset" value="mindset">
+                            <label for="checkboxH5" class="css-label back5">Mindset</label>
+                        </div>
+                        <div class="col"></div>
+                    </div>-->
+                    <div style="text-align: center">
+                        <label for="" class="border">Preferred Language</label>
+                    </div>
+                    <ul class="language">
+                        <li ng-click="selectLanguage(45)"><a lang="en" ng-class="{active:record.LanguageID==45}">English</a></li>
+                        <li ng-click="selectLanguage(46)"><a lang="es" ng-class="{active:record.LanguageID==46}">Español</a></li>
+                    </ul>
+                    <div style="margin-top: 60px"></div>
+                    <div class="alert danger">
+                        {{error.error_description || error}}
+                    </div>
+                    <button type="submit" class="login button button-block" ng-click="saveProfile(record,config.extra)">{{saving?'Saving':'Save Account'}}</button>
+                </form>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>
